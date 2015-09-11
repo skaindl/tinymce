@@ -118,8 +118,9 @@ define("tinymce/EditorUpload", [
 
 			return imageScanner.findAll(editor.getBody()).then(aliveGuard(function(result) {
 				Arr.each(result, function(resultItem) {
-					replaceUrlInUndoStack(resultItem.image.src, resultItem.blobInfo.blobUri());
-					resultItem.image.src = resultItem.blobInfo.blobUri();
+					// Don't replace base64 img src with blob
+					// replaceUrlInUndoStack(resultItem.image.src, resultItem.blobInfo.blobUri());
+					// resultItem.image.src = resultItem.blobInfo.blobUri();
 				});
 
 				return result;
